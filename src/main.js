@@ -1,2 +1,33 @@
 //项目js入口文件
-console.log('ok');
+import Vue from 'vue'
+//引入router模块
+import vueRouter from 'vue-router'
+Vue.use(vueRouter)
+
+//导入mintUI的组件
+// import Mint from 'mint-ui'
+// Vue.use(Mint)
+import { Header,Swipe, SwipeItem } from 'mint-ui'
+Vue.component(Header.name, Header);
+Vue.component(Swipe.name, Swipe);
+Vue.component(SwipeItem.name, SwipeItem);
+
+
+//导入mui的css
+import './lib/mui/css/mui.min.css'
+import './lib/mui/css/icons-extra.css'
+
+//导入mintUI的css
+import 'mint-ui/lib/style.min.css'
+//引入app组件
+import app from './App.vue'
+
+import router from './router.js'
+
+const vm = new Vue({
+    el: '#app',
+    data: {},
+    methods: {},
+    render: c => c(app),
+    router
+})
