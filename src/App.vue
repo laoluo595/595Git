@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>这是App组件</h1>
+        <h1>这是Ap</h1>
     </div>
 </template>
 
