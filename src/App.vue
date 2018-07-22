@@ -7,7 +7,9 @@
             </router-link>
         </mt-header>
         <!-- 这是路由模块 -->
-        <router-view></router-view>
+        <transition>
+            <router-view></router-view>
+        </transition>
         <!-- 这是底部模块 -->
         <nav class="mui-bar mui-bar-tab">
             <router-link class="mui-tab-item" to="/home">
@@ -37,8 +39,22 @@
 
 
 <style lang="scss" scoped>
-.app-container{
-    padding-top:40px;
+.app-container {
+  padding-top: 40px;
+  overflow: hidden;
+}
+.v-enter {
+  transform: translateX(100%);
+  opacity: 0;
+}
+.v-leave-to {
+  transform: translateX(-100%);
+  opacity: 0;
+  position: absolute;
+}
+.v-enter-active,
+.v-leave-active {
+  transition: all 0.6s;
 }
 </style>
 
