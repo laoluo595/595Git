@@ -8,6 +8,14 @@ Vue.use(vueRouter)
 //引入axios，将axios挂载到vue的原型上
 import axios from 'axios'
 Vue.prototype.$ajax = axios
+axios.defaults.baseURL = 'http://laoluo.online:5000/' // 默认地址
+
+//导入时间模块moment
+import moment from 'moment'
+//定义全局时间过滤器
+Vue.filter('dataFormat',(data,pattern="YYYY-MM-DD HH:mm:ss")=>{
+    return moment(data).format(pattern)
+})
 
 //导入mintUI的组件
 // import Mint from 'mint-ui'
