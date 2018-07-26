@@ -11,6 +11,9 @@
         </div>
         <hr>
         <!-- 这是图片展示区域 start -->
+        <div class="imgshowBox">
+            <img class="preview-img" v-for="(item, index) in list" :src="item.src" height="100" @click="$preview.open(index, list)" :key="item.id">
+        </div>
         <!-- 这是图片展示区域 end -->
         <!-- 这是content start -->
         <div class="content">
@@ -31,18 +34,31 @@ export default {
   data() {
     return {
       id: this.$route.params.id,
-      photoInfoObj:{}
+      photoInfoObj:{},
+      list:[]
     }
   },
   created() {
     this.getimageInfo()
+    this.getimgUrl()
   },
   methods: {
     getimageInfo() {
       this.$ajax.get('api/getimageInfo/' + this.id).then(result => {
-        console.log(result)
         if (result.data.status === 0) {
           this.photoInfoObj = result.data.message
+        }
+      })
+    },
+    getimgUrl(){
+      this.$ajax.get('/api/getthumimages/'+this.id)
+      .then(result=>{
+        if(result.data.status === 0){
+          result.data.message.forEach(item=>{
+            item.w = 600
+            item.h = 400
+          })
+          this.list = result.data.message
         }
       })
     }

@@ -9,11 +9,11 @@ Vue.use(vueRouter)
 import axios from 'axios'
 Vue.prototype.$ajax = axios
 axios.defaults.baseURL = 'http://laoluo.online:5000/' // 默认地址
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'//设置表单post提交默认以application/x-www-form-urlencoded方式提交
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded' //设置表单post提交默认以application/x-www-form-urlencoded方式提交
 //导入时间模块moment
 import moment from 'moment'
 //定义全局时间过滤器
-Vue.filter('dataFormat',(data,pattern="YYYY-MM-DD HH:mm:ss")=>{
+Vue.filter('dataFormat', (data, pattern = "YYYY-MM-DD HH:mm:ss") => {
     return moment(data).format(pattern)
 })
 
@@ -27,6 +27,11 @@ Vue.use(Mint)
 // // Vue.component(Button.name, Button);
 // Vue.use(Lazyload);
 
+
+//引入veu-preview
+import VuePreview from 'vue-preview'
+//使用vue-preview
+Vue.use(VuePreview)
 
 //导入mui的css
 import './lib/mui/css/mui.min.css'

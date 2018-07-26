@@ -10,6 +10,8 @@ import photosList from './components/photos/PhotoList.vue'
 import photoInfo from './components/photos/PhotoInfo.vue'
 import productList from './components/product/ProductList.vue'
 import productInfo from './components/product/productInfo.vue'
+import productContent from './components/product/ProductContent.vue'
+import productComment from './components/product/ProductComment.vue'
 //路由
 const router = new vueRouter({
     routes: [{
@@ -55,7 +57,17 @@ const router = new vueRouter({
         {
             path: '/home/productInfo/:id',
             component: productInfo,
-            name:'productInfo'
+            name: 'productInfo'
+        },
+        {
+            path: '/home/productContent/:id',
+            component: productContent,
+            name: 'productContent'
+        },
+        {
+            path: '/home/productComment/:id',
+            component: productComment,
+            name: 'productComment'
         },
     ],
     linkActiveClass: 'mui-active'
