@@ -105,6 +105,13 @@ export default {
     },
     jionShopCar() {
       this.ballFlag = !this.ballFlag
+      var shopObj = {
+        id:this.ProductInfodata.id, //商品的id
+        price:this.ProductInfodata.sell_price, //商品的单价
+        count:parseInt(this.count), //商品的数量
+        isSelect:true //默认传过去是选中状态
+      }
+      this.$store.commit("addShopCar",shopObj)
     },
     beforeEnter(el) {
       el.style.transform = 'translate(0, 0)'
@@ -124,7 +131,6 @@ export default {
     },
     getInputCount(count){
       this.count = count
-      console.log(this.count);
     }
   },
   components: {

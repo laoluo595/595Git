@@ -1,7 +1,7 @@
 <template>
   <div class="mui-numbox" data-numbox-min='1'>
     <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-    <input class="mui-input-numbox" type="number" @change="changeFn" ref="changecount"/>
+    <input class="mui-input-numbox" type="number" :value="initvalue" @change="changeFn" ref="changecount" readonly/>
     <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
   </div>
 </template>
@@ -18,19 +18,15 @@ export default {
   },
   methods:{
     changeFn(){
-      this.$emit("getInputCount",this.$refs.changecount.value)
+      this.$store.commit("updataShopCar",{
+        id:this.id,
+        count:this.$refs.changecount.value
+      })
     }
   },
-  props: ["max"],
-  watch: {
-    // 属性监听
-    max: function(newVal, oldVal) {
-      // 使用 JS API 设置 numbox 的最大值
-      mui(".mui-numbox")
-        .numbox()
-        .setOption("max", newVal);
-    }
-  }
+  props:[
+      "initvalue","id"
+  ]
 }
 </script>
 

@@ -1,7 +1,7 @@
 <template>
     <div class="productListContainer">
         <div class="productItem" v-for="item in getThumImgUrlArr" :key="item.id" @click="locationProductInfo(item.id)">
-            <img :src="'{{item.img_url}}'">
+            <img :src="item.img_url">
             <h3>{{item.title}}</h3>
             <div class="info">
                 <p class="price">
